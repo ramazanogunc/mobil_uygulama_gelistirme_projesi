@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profile_to_mekanAddEditFragment"
+            app:destination="@id/mekanAddEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/register"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/mekanAddEditFragment"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.MekanAddEditFragment"
+        android:label="MekanAddEditFragment" />
+    <fragment
+        android:id="@+id/mekanListFragment"
+        android:name="com.cbu.mobil_dersi_projesi.ui.fragment.profileTabFragments.MekanListFragment"
+        android:label="MekanListFragment" />
+</navigation>

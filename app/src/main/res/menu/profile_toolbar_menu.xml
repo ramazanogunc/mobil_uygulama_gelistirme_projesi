@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/deleteProfile"
+        android:title="Hesabı Sil"/>
+
+    <item
+        android:id="@+id/logOut"
+        android:title="Çıkış Yap"/>
+</menu>
