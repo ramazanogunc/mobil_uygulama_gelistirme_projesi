@@ -11,13 +11,15 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
+import com.cbu.mobil_dersi_projesi.R
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentHomeBinding
-import com.cbu.mobil_dersi_projesi.helper.mekanInfoDialog
 import com.cbu.mobil_dersi_projesi.viewModel.HomeViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.HomeViewModelFactory
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -112,8 +114,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         }
 
         map?.setOnMarkerClickListener { marker ->
-            homeViewModel.get(marker.tag as Int).observe(viewLifecycleOwner){ mekan->
-                mekanInfoDialog(requireContext(), mekan)
+            homeViewModel.get(marker.tag as Int).observe(viewLifecycleOwner) { mekan ->
+                //mekanInfoDialog(requireContext(), mekan)
+                val bundle = bundleOf("mekan" to mekan)
+                findNavController().navigate(R.id.action_home_to_mekanDetailFragment, bundle)
+                // navigating to weather
             }
             return@setOnMarkerClickListener true
         }

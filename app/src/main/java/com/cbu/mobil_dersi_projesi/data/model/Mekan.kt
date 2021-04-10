@@ -1,10 +1,13 @@
 package com.cbu.mobil_dersi_projesi.data.model
 
 import android.graphics.Bitmap
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(
     tableName = "mekan",
     foreignKeys = [ForeignKey(
@@ -26,7 +29,7 @@ data class Mekan(
     var _img2: Bitmap? = null,
     var _img3: Bitmap? = null,
     var userId: Int = 0
-) {
+) : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var mekanId: Int = 0
 }

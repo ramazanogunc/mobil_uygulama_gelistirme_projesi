@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/home"
         android:name="com.cbu.mobil_dersi_projesi.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_home_to_mekanDetailFragment"
+            app:destination="@id/mekanDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="com.cbu.mobil_dersi_projesi.ui.profile.ProfileFragment"
@@ -35,4 +39,8 @@
         android:id="@+id/mekanListFragment"
         android:name="com.cbu.mobil_dersi_projesi.ui.profileTab.MekanListFragment"
         android:label="MekanListFragment" />
+    <fragment
+        android:id="@+id/mekanDetailFragment"
+        android:name="com.cbu.mobil_dersi_projesi.ui.mekanDetail.MekanDetailFragment"
+        android:label="MekanDetailFragment" />
 </navigation>

@@ -17,6 +17,8 @@ import com.cbu.mobil_dersi_projesi.data.model.Mekan
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanListBinding
 import com.cbu.mobil_dersi_projesi.helper.alertConfirm
+import com.cbu.mobil_dersi_projesi.helper.hide
+import com.cbu.mobil_dersi_projesi.helper.show
 import com.cbu.mobil_dersi_projesi.ui.adapter.MekanRecyclerAdapter
 import com.cbu.mobil_dersi_projesi.ui.mekanAddEdit.MekanAddEditFragment
 import com.cbu.mobil_dersi_projesi.viewModel.MekanListViewModel
