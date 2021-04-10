@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment
+package com.cbu.mobil_dersi_projesi.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -60,7 +60,7 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.profile_toolbar_menu, menu);
+        inflater.inflate(R.menu.profile_toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 

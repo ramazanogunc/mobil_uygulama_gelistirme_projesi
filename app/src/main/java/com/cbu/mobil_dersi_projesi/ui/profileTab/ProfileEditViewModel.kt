@@ -1,32 +1,32 @@
 package com.cbu.mobil_dersi_projesi.viewModel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
-import com.cbu.mobil_dersi_projesi.model.User
 import kotlinx.coroutines.launch
 
 
 class ProfileEditViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    val isLoading = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
+
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     fun getByUserId(userId: Int, callback: (user: User) -> Unit) {
         viewModelScope.launch {
-            isLoading.value = true
+            _isLoading.value = true
             val user = userRepository.getByUserId(userId)
-            isLoading.value = false
+            _isLoading.value = false
             callback(user)
         }
     }
 
     fun update(user: User, onComplete: () -> Unit) =
         viewModelScope.launch {
-            isLoading.value = true
+            _isLoading.value = true
             userRepository.update(user)
-            isLoading.value = false
+            _isLoading.value = false
             onComplete()
         }
 }

@@ -3,8 +3,8 @@ package com.cbu.mobil_dersi_projesi.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.cbu.mobil_dersi_projesi.ui.fragment.profileTabFragments.MekanListFragment
-import com.cbu.mobil_dersi_projesi.ui.fragment.profileTabFragments.ProfileEditFragment
+import com.cbu.mobil_dersi_projesi.ui.profileTab.MekanListFragment
+import com.cbu.mobil_dersi_projesi.ui.profileTab.ProfileEditFragment
 
 class ProfileTabFragmentAdapter(fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

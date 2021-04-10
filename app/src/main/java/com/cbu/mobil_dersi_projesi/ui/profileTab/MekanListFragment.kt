@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment.profileTabFragments
+package com.cbu.mobil_dersi_projesi.ui.profileTab
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,14 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbu.mobil_dersi_projesi.R
 import com.cbu.mobil_dersi_projesi.data.AppSharedPreference
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanListBinding
 import com.cbu.mobil_dersi_projesi.helper.alertConfirm
-import com.cbu.mobil_dersi_projesi.helper.hide
-import com.cbu.mobil_dersi_projesi.helper.show
-import com.cbu.mobil_dersi_projesi.model.Mekan
 import com.cbu.mobil_dersi_projesi.ui.adapter.MekanRecyclerAdapter
-import com.cbu.mobil_dersi_projesi.ui.fragment.MekanAddEditFragment
+import com.cbu.mobil_dersi_projesi.ui.mekanAddEdit.MekanAddEditFragment
 import com.cbu.mobil_dersi_projesi.viewModel.MekanListViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.MekanListViewModelFactory
 

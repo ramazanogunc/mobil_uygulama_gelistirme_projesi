@@ -1,9 +1,9 @@
-package com.cbu.mobil_dersi_projesi.model
+package com.cbu.mobil_dersi_projesi.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "user")
 data class User(
     val nameSurname: String,
     val email: String,

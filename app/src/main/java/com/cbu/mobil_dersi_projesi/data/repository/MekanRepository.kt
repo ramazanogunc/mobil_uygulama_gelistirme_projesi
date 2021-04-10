@@ -1,7 +1,7 @@
 package com.cbu.mobil_dersi_projesi.data.repository
 
 import com.cbu.mobil_dersi_projesi.data.local.MekanDao
-import com.cbu.mobil_dersi_projesi.model.Mekan
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
 
 class MekanRepository(private val mekanDao: MekanDao) {
 

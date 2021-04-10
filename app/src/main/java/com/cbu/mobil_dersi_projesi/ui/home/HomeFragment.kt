@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment
+package com.cbu.mobil_dersi_projesi.ui.home
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -14,16 +14,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.*
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentHomeBinding
 import com.cbu.mobil_dersi_projesi.helper.mekanInfoDialog
 import com.cbu.mobil_dersi_projesi.viewModel.HomeViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.HomeViewModelFactory
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.*
 
 
 class HomeFragment : Fragment(), OnMapReadyCallback {

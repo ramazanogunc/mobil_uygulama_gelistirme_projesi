@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cbu.mobil_dersi_projesi.model.Mekan
-import com.cbu.mobil_dersi_projesi.model.User
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
+import com.cbu.mobil_dersi_projesi.data.model.User
 
 @Database(entities = [User::class, Mekan::class], version = 1)
 @TypeConverters(Converters::class)

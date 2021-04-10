@@ -1,6 +1,5 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment
+package com.cbu.mobil_dersi_projesi.ui.profileTab
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,30 +9,28 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.cbu.mobil_dersi_projesi.data.AppSharedPreference
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
+import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
-import com.cbu.mobil_dersi_projesi.databinding.FragmentLoginBinding
+import com.cbu.mobil_dersi_projesi.databinding.FragmentRegisterAndEditBinding
 import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
 import com.cbu.mobil_dersi_projesi.helper.toast
-import com.cbu.mobil_dersi_projesi.model.User
-import com.cbu.mobil_dersi_projesi.viewModel.LoginViewModel
-import com.cbu.mobil_dersi_projesi.viewModel.LoginViewModelFactory
+import com.cbu.mobil_dersi_projesi.viewModel.ProfileEditViewModel
+import com.cbu.mobil_dersi_projesi.viewModel.ProfileEditViewModelFactory
 
-
-class LoginFragment : Fragment() {
-    private var _binding: FragmentLoginBinding? = null
+class ProfileEditFragment:Fragment() {
+    private var _binding: FragmentRegisterAndEditBinding? = null
     private val binding get() = _binding!!
 
-    private val loginViewModel by lazy {
+    private val profileEditViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
-            LoginViewModelFactory(
+            ProfileEditViewModelFactory(
                 UserRepository(
                     AppDatabase.getInstance(requireActivity()).userDao()
                 )
             )
-        ).get(LoginViewModel::class.java)
+        ).get(ProfileEditViewModel::class.java)
     }
-
     private val loadingDialog by lazy { LoadingDialog(requireContext()) }
 
     override fun onCreateView(
@@ -41,7 +38,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterAndEditBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,11 +50,23 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUi()
+        getData()
+    }
+
+    private fun getData() {
+        val currentUserId = AppSharedPreference(requireContext()).getCurrentUserId()
+        profileEditViewModel.getByUserId(currentUserId){ user ->
+            binding.nameSurname.setText(user.nameSurname)
+            binding.email.setText(user.email)
+            binding.password.setText(user.password)
+        }
     }
 
     private fun initUi() {
-        binding.btnLogin.setOnClickListener { onClickBtnSave() }
-        loginViewModel.isLoading.observe(viewLifecycleOwner){ isLoading ->
+        binding.btnSave.setOnClickListener { onClickBtnSave() }
+        binding.appbar.hide()
+        binding.btnSave.text = "Güncelle"
+        profileEditViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             if (isLoading)
                 loadingDialog.show()
             else
@@ -67,35 +76,26 @@ class LoginFragment : Fragment() {
 
     private fun onClickBtnSave() {
         if (validateEditTexts()) {
+            val nameSurname = binding.nameSurname.text.toString()
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
-            loginViewModel.login(email, password) { user ->
-                loginCheckAndRedirect(user)
+            val user = User(nameSurname, email, password)
+            user.userId = AppSharedPreference(requireContext()).getCurrentUserId()
+            profileEditViewModel.update(user){
+                toast("Profil güncellendi.")
             }
         }
     }
 
-    private fun loginCheckAndRedirect(user: User?) {
-        if (user != null) {
-            val sharedPreference = AppSharedPreference(requireContext())
-            sharedPreference.setIsLogin(true)
-            sharedPreference.setCurrentUserId(user.userId)
-            // recreate main activity
-            val intent = requireActivity().intent
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-        } else {
-            toast("Check email or password")
-        }
-    }
-
     private fun validateEditTexts(): Boolean {
+        binding.nameSurname.error = null
         binding.email.error = null
         binding.password.error = null
 
+        if (binding.nameSurname.text.isNullOrBlank()) binding.nameSurname.error = "required"
         if (binding.email.text.isNullOrBlank()) binding.email.error = "required"
         if (binding.password.text.isNullOrBlank()) binding.password.error = "required"
 
-        return binding.email.error == null && binding.password.error == null
+        return binding.nameSurname.error == null && binding.email.error == null && binding.password.error == null
     }
 }

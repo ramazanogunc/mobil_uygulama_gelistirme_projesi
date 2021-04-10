@@ -1,23 +1,23 @@
 package com.cbu.mobil_dersi_projesi.viewModel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
-import com.cbu.mobil_dersi_projesi.model.User
 import kotlinx.coroutines.launch
 
 
 class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    val isLoading = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>()
+
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     fun register(user: User, onComplete: () -> Unit) =
         viewModelScope.launch {
-            isLoading.value = true
+            _isLoading.value = true
             userRepository.register(user)
-            isLoading.value = false
+            _isLoading.value = false
             onComplete()
         }
 }

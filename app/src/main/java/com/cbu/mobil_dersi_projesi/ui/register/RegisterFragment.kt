@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment
+package com.cbu.mobil_dersi_projesi.ui.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,11 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.cbu.mobil_dersi_projesi.R
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
+import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentRegisterAndEditBinding
 import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
 import com.cbu.mobil_dersi_projesi.helper.toast
-import com.cbu.mobil_dersi_projesi.model.User
 import com.cbu.mobil_dersi_projesi.viewModel.RegisterViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.RegisterViewModelFactory
 

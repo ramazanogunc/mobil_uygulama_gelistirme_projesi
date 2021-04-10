@@ -1,7 +1,7 @@
 package com.cbu.mobil_dersi_projesi.data.repository
 
 import com.cbu.mobil_dersi_projesi.data.local.UserDao
-import com.cbu.mobil_dersi_projesi.model.User
+import com.cbu.mobil_dersi_projesi.data.model.User
 
 class UserRepository(private val userDao: UserDao) {
 

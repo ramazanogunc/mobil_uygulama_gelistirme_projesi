@@ -3,8 +3,8 @@ package com.cbu.mobil_dersi_projesi.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
 import com.cbu.mobil_dersi_projesi.databinding.ItemMekanBinding
-import com.cbu.mobil_dersi_projesi.model.Mekan
 
 class MekanRecyclerAdapter(
     private val mekanList: List<Mekan>,

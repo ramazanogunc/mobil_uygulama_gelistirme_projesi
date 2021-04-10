@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.ui.fragment
+package com.cbu.mobil_dersi_projesi.ui.mekanAddEdit
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -12,19 +12,19 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException
-import com.google.android.gms.common.GooglePlayServicesRepairableException
-import com.google.android.gms.location.places.ui.PlacePicker
-import com.google.android.gms.location.places.ui.PlacePicker.getPlace
 import com.cbu.mobil_dersi_projesi.data.AppSharedPreference
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanAddEditBinding
 import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
 import com.cbu.mobil_dersi_projesi.helper.toast
-import com.cbu.mobil_dersi_projesi.model.Mekan
 import com.cbu.mobil_dersi_projesi.viewModel.MekanAddEditViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.MekanAddEditViewModelFactory
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException
+import com.google.android.gms.common.GooglePlayServicesRepairableException
+import com.google.android.gms.location.places.ui.PlacePicker
+import com.google.android.gms.location.places.ui.PlacePicker.getPlace
 import com.vansuita.pickimage.bundle.PickSetup
 import com.vansuita.pickimage.dialog.PickImageDialog
 
@@ -82,16 +82,16 @@ class MekanAddEditFragment : Fragment() {
             toast(mekan.toString())
             binding.name.setText(mekan.name)
             binding.description.setText(mekan.description)
-            if (mekan.img1 != null) {
-                binding.img1.setImageBitmap(mekan.img1)
+            if (mekan._img1 != null) {
+                binding.img1.setImageBitmap(mekan._img1)
                 isSelectImg1 = true
             }
-            if (mekan.img2 != null) {
-                binding.img2.setImageBitmap(mekan.img2)
+            if (mekan._img2 != null) {
+                binding.img2.setImageBitmap(mekan._img2)
                 isSelectImg2 = true
             }
-            if (mekan.img3 != null) {
-                binding.img3.setImageBitmap(mekan.img3)
+            if (mekan._img3 != null) {
+                binding.img3.setImageBitmap(mekan._img3)
                 isSelectImg3 = true
             }
             latitude = mekan.latitude

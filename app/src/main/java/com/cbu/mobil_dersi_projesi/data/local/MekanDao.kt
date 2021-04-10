@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.cbu.mobil_dersi_projesi.model.Mekan
+import com.cbu.mobil_dersi_projesi.data.model.Mekan
 
 @Dao
 interface MekanDao {
