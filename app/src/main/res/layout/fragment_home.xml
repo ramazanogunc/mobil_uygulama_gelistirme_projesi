@@ -10,9 +10,16 @@
         style="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:title="Yakındaki Mekanlar"
-        app:titleTextColor="@color/white" />
+        android:gravity="center"
+        android:paddingRight="20dp"
+        app:title="">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/logo"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"

@@ -23,4 +23,8 @@
     <style name="toolbarTextStyle">
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
