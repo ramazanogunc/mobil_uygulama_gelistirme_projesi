@@ -2,8 +2,6 @@ package com.cbu.mobil_dersi_projesi.ui.mekanAddEdit
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,8 +23,6 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.location.places.ui.PlacePicker
 import com.google.android.gms.location.places.ui.PlacePicker.getPlace
-import com.vansuita.pickimage.bundle.PickSetup
-import com.vansuita.pickimage.dialog.PickImageDialog
 
 
 class MekanAddEditFragment : Fragment() {
@@ -82,18 +78,7 @@ class MekanAddEditFragment : Fragment() {
             toast(mekan.toString())
             binding.name.setText(mekan.name)
             binding.description.setText(mekan.description)
-            if (mekan._img1 != null) {
-                binding.img1.setImageBitmap(mekan._img1)
-                isSelectImg1 = true
-            }
-            if (mekan._img2 != null) {
-                binding.img2.setImageBitmap(mekan._img2)
-                isSelectImg2 = true
-            }
-            if (mekan._img3 != null) {
-                binding.img3.setImageBitmap(mekan._img3)
-                isSelectImg3 = true
-            }
+
             latitude = mekan.latitude
             longitude = mekan.longitude
             isSelectLocation = true
@@ -103,18 +88,7 @@ class MekanAddEditFragment : Fragment() {
 
     private fun initUi() {
         binding.btnSave.setOnClickListener { onClickBtnSave() }
-        binding.img1.setOnClickListener {
-            isSelectImg1 = false
-            pickImages(binding.img1, 1)
-        }
-        binding.img2.setOnClickListener {
-            isSelectImg2 = false
-            pickImages(binding.img2, 2)
-        }
-        binding.img3.setOnClickListener {
-            isSelectImg3 = false
-            pickImages(binding.img3, 3)
-        }
+
         binding.btnPickLocation.setOnClickListener { onClickBtnPickLocation() }
         doEditMode { binding.collapsingToolbarLayout.title = "Mekan Düzenle" }
         mekanAddEditViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
@@ -167,24 +141,15 @@ class MekanAddEditFragment : Fragment() {
     private fun getMekanFromUi(): Mekan {
         val name = binding.name.text.toString()
         val description = binding.description.text.toString()
-        val img1: Bitmap? = if (isSelectImg1) imageViewToBitmap(binding.img1) else null
-        val img2: Bitmap? = if (isSelectImg2) imageViewToBitmap(binding.img2) else null
-        val img3: Bitmap? = if (isSelectImg3) imageViewToBitmap(binding.img3) else null
+
         return Mekan(
             name,
             description,
             latitude,
             longitude,
-            img1,
-            img2,
-            img3,
             AppSharedPreference(requireContext()).getCurrentUserId()
         )
     }
-
-    var isSelectImg1 = false
-    var isSelectImg2 = false
-    var isSelectImg3 = false
 
     var isSelectLocation = false
 
@@ -207,26 +172,6 @@ class MekanAddEditFragment : Fragment() {
 
     lateinit var selectedImageView: ImageView
 
-    fun pickImages(selectedImageView: ImageView, whichImage: Int) {
-        this.selectedImageView = selectedImageView
-        PickImageDialog.build(
-            PickSetup().setTitle("Kaynak")
-                .setProgressText("Yükleniyor")
-                .setCancelText("İptal")
-                .setCameraButtonText("Kamera")
-                .setGalleryButtonText("Galeri")
-        )
-            .setOnPickResult {
-                selectedImageView.setImageURI(it.uri)
-                if (whichImage == 1) isSelectImg1 = true
-                if (whichImage == 2) isSelectImg2 = true
-                if (whichImage == 3) isSelectImg3 = true
-            }
-            .setOnPickCancel {
-            }.show(childFragmentManager)
-
-    }
-
 
     var latitude: Double = 0.0
     var longitude: Double = 0.0
@@ -243,19 +188,6 @@ class MekanAddEditFragment : Fragment() {
                 isSelectLocation = true
             }
         }
-    }
-
-    private fun imageViewToBitmap(imageView: ImageView): Bitmap {
-        val bitmapDrawable = imageView.drawable as BitmapDrawable
-        val bitmap: Bitmap
-        if (bitmapDrawable == null) {
-            imageView.buildDrawingCache()
-            bitmap = imageView.drawingCache
-            imageView.buildDrawingCache(false)
-        } else {
-            bitmap = bitmapDrawable.bitmap
-        }
-        return bitmap
     }
 
     private fun doAddMode(function: () -> Unit) {

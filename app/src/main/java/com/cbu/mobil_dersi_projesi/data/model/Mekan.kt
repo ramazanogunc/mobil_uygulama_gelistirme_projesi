@@ -22,12 +22,6 @@ data class Mekan(
     var description: String,
     var latitude: Double,
     var longitude: Double,
-    // img 1,2,3 burada olmaması gerektiğini biliyorum.
-    // Vakit kısıtlı olduğundan uğraşmamak için bu tablo içerisinde tutuyorum.
-    // Normal şartlarda veritabanının normalize edilip resim için farklı tablo oluşturup foreign key ile bağlanması gerekli.
-    var _img1: Bitmap? = null,
-    var _img2: Bitmap? = null,
-    var _img3: Bitmap? = null,
     var userId: Int = 0
 ) : Parcelable {
     @PrimaryKey(autoGenerate = true)
