@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface Api {
     @Headers(
-        "authorization", "apikey 401qOj8Z7Bi8vI1BUTclWX:7n1shCFwU5mjON4nzR4Xk4"
+        "authorization: apikey 401qOj8Z7Bi8vI1BUTclWX:7n1shCFwU5mjON4nzR4Xk4"
     )
     @GET("weather/getWeather")
     suspend fun getWeather(

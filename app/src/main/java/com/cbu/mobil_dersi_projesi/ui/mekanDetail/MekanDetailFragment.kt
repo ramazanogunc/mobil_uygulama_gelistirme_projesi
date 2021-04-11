@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.cbu.mobil_dersi_projesi.data.model.Mekan
+import com.cbu.mobil_dersi_projesi.data.model.Weather
 import com.cbu.mobil_dersi_projesi.data.repository.MekanDetailRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanDetailBinding
 import com.cbu.mobil_dersi_projesi.network.WeatherClient
@@ -49,29 +51,52 @@ class MekanDetailFragment : Fragment() {
 
         mekan = requireArguments().getParcelable<Mekan>("mekan")
 
-        Log.e("city", getCity(mekan!!.latitude, mekan!!.longitude))
+        val cityName = getCityName(mekan!!.latitude, mekan!!.longitude)
+        Log.e("city", cityName)
 
+        setMekanDetails()
+        mekanDetailViewModel.getWeather("en", cityName)
+        observeWeather()
+    }
+
+    private fun observeWeather() {
         mekanDetailViewModel.weather.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             when (it.status) {
                 Status.LOADING -> {
-
                 }
-
                 Status.SUCCESS -> {
-                    binding.txtMekanDesc.text = getCity(mekan!!.latitude, mekan!!.longitude)
-                    binding.txtMekanWeatherToday.text = it.data?.first()?.day
-
+                    setWeathers(it.data!!)
                 }
-
                 Status.ERROR -> {
-
                 }
             }
         })
-
     }
 
-    private fun getCity(lat: Double, lng: Double): String {
+    private fun setWeathers(weathers: List<Weather>) {
+        val today = weathers.first()
+        val tomorrow = weathers[1]
+
+        // today
+        binding.txtMekanWeatherToday.text = "${today.day} - ${today.description}\n" +
+                                            "${today.degree}"
+        Glide.with(requireContext()).load(today.icon).centerCrop().into(binding.imageWeatherToday)
+
+        // tomorrow
+        binding.txtMekanWeatherTomorrow.text = "${tomorrow.day} - ${tomorrow.description}\n" +
+                                               "${tomorrow.degree}"
+        Glide.with(requireContext()).load(tomorrow.icon).fitCenter().into(binding.imageWeatherTomorrow)
+
+    }
+    private fun setMekanDetails(){
+        binding.toolbar.title = mekan!!.name
+        binding.txtMekanDesc.text = "Description\n\n${mekan!!.description}"
+        binding.txtMekanRotation.text = "Locale:\n\n" +
+                                        "Latitude: ${mekan!!.latitude}\n" +
+                                        "Longitude: ${mekan!!.longitude}"
+    }
+
+    private fun getCityName(lat: Double, lng: Double): String {
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
         val addresses: List<Address> = geocoder.getFromLocation(lat, lng, 1)
         return addresses.first().adminArea
