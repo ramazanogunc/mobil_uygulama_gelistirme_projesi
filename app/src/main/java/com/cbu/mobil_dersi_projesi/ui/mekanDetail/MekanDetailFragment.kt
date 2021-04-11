@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -16,6 +17,7 @@ import com.cbu.mobil_dersi_projesi.data.repository.MekanDetailRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanDetailBinding
 import com.cbu.mobil_dersi_projesi.network.WeatherClient
 import com.cbu.mobil_dersi_projesi.util.Status
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import java.util.*
 
 
@@ -79,13 +81,17 @@ class MekanDetailFragment : Fragment() {
 
         // today
         binding.txtMekanWeatherToday.text = "${today.day} - ${today.description}\n" +
-                                            "${today.degree}"
+                "${today.degree}"
         Glide.with(requireContext()).load(today.icon).centerCrop().into(binding.imageWeatherToday)
 
         // tomorrow
         binding.txtMekanWeatherTomorrow.text = "${tomorrow.day} - ${tomorrow.description}\n" +
-                                               "${tomorrow.degree}"
-        Glide.with(requireContext()).load(tomorrow.icon).fitCenter().into(binding.imageWeatherTomorrow)
+                "${tomorrow.degree}"
+        val imgUri1 = today.icon!!.toUri().buildUpon().scheme("https").build()
+        GlideToVectorYou.justLoadImage(activity, imgUri1, binding.imageWeatherToday)
+
+        val imgUri2 = tomorrow.icon!!.toUri().buildUpon().scheme("https").build()
+        GlideToVectorYou.justLoadImage(activity, imgUri2, binding.imageWeatherTomorrow)
 
     }
     private fun setMekanDetails(){

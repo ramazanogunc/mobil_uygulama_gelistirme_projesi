@@ -63,6 +63,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initGoogleMap(savedInstanceState)
+
+
     }
 
     private fun initGoogleMap(savedInstanceState: Bundle?) {
