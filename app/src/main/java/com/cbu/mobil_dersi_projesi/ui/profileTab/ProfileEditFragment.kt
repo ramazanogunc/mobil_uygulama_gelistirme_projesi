@@ -12,9 +12,9 @@ import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentRegisterAndEditBinding
-import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
-import com.cbu.mobil_dersi_projesi.helper.hide
-import com.cbu.mobil_dersi_projesi.helper.toast
+import com.cbu.mobil_dersi_projesi.util.helper.LoadingDialog
+import com.cbu.mobil_dersi_projesi.util.helper.hide
+import com.cbu.mobil_dersi_projesi.util.helper.toast
 import com.cbu.mobil_dersi_projesi.viewModel.ProfileEditViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.ProfileEditViewModelFactory
 

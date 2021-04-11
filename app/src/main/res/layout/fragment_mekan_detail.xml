@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:drawableRight="@drawable/camera"
+                tools:drawableRight="@drawable/camera"
                 android:paddingRight="30dp"
                 android:textSize="30sp"
                 tools:text="Friday" />

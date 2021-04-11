@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.helper
+package com.cbu.mobil_dersi_projesi.util.helper
 
 import android.view.View
 
@@ -9,4 +9,6 @@ fun View.show(){
 fun View.hide(){
     this.visibility = View.GONE
 }
+
+
 

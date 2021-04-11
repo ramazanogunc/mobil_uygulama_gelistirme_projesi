@@ -1,4 +1,4 @@
-package com.cbu.mobil_dersi_projesi.helper
+package com.cbu.mobil_dersi_projesi.util.helper
 
 import android.app.ProgressDialog
 import android.content.Context

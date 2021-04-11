@@ -17,8 +17,8 @@ import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.model.Mekan
 import com.cbu.mobil_dersi_projesi.data.repository.MekanRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentMekanAddEditBinding
-import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
-import com.cbu.mobil_dersi_projesi.helper.toast
+import com.cbu.mobil_dersi_projesi.util.helper.LoadingDialog
+import com.cbu.mobil_dersi_projesi.util.helper.toast
 import com.cbu.mobil_dersi_projesi.viewModel.MekanAddEditViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.MekanAddEditViewModelFactory
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException

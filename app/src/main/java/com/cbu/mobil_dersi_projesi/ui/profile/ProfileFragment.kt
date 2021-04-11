@@ -10,10 +10,10 @@ import com.cbu.mobil_dersi_projesi.data.AppSharedPreference
 import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentProfileBinding
-import com.cbu.mobil_dersi_projesi.helper.alertConfirm
-import com.cbu.mobil_dersi_projesi.helper.toast
 import com.cbu.mobil_dersi_projesi.ui.MainActivity
 import com.cbu.mobil_dersi_projesi.ui.adapter.ProfileTabFragmentAdapter
+import com.cbu.mobil_dersi_projesi.util.helper.alertConfirm
+import com.cbu.mobil_dersi_projesi.util.helper.toast
 import com.cbu.mobil_dersi_projesi.viewModel.ProfileViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.ProfileViewModelFactory
 

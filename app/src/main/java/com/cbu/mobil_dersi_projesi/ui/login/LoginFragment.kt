@@ -13,8 +13,8 @@ import com.cbu.mobil_dersi_projesi.data.local.AppDatabase
 import com.cbu.mobil_dersi_projesi.data.model.User
 import com.cbu.mobil_dersi_projesi.data.repository.UserRepository
 import com.cbu.mobil_dersi_projesi.databinding.FragmentLoginBinding
-import com.cbu.mobil_dersi_projesi.helper.LoadingDialog
-import com.cbu.mobil_dersi_projesi.helper.toast
+import com.cbu.mobil_dersi_projesi.util.helper.LoadingDialog
+import com.cbu.mobil_dersi_projesi.util.helper.toast
 import com.cbu.mobil_dersi_projesi.viewModel.LoginViewModel
 import com.cbu.mobil_dersi_projesi.viewModel.LoginViewModelFactory
 
